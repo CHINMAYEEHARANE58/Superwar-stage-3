@@ -27,21 +27,21 @@ const initPlayers = (players) => {
 
     // Instead of forloop use Map method
     // Code here
-    players.map(function(player, i){
-        let newPlayer = {}
-        newPlayer.name = player
-        newPlayer.image = `./images/super-${i+1}.png`
-        newPlayer.strength = getRandomStrength()
-
-        if(i%2 == 0){
-            newPlayer.type = "hero"
+    players.map(function(player,i){
+        let newplayer = {}
+        newplayer.name = player;
+        newplayer.image = `./images/super-${i+1}.png`;
+        newplayer.strength= getRandomStrength();
+        if(i%2==0){
+            newplayer.type = "hero";
         }
         else{
-            newPlayer.type = "villian"
+            newplayer.type = "villain"
         }
-
-        detailedPlayers.push(newPlayer);
+        detailedPlayers.push(newplayer);
     })
+
+    
 
     return detailedPlayers;
 }
@@ -58,15 +58,19 @@ const buildPlayers = (players, type) => {
     // Instead of using for loop
     // Use chaining of Array methods - filter, map and join
     // Type your code here
-    fragment= players.filter((player)=>player.type === type).map((players)=>
-    `<div class="player">
-        <img src="${players.image}" alt="">
-        <div class="name">${players.name}</div>
-        <div class="strength">${players.strength}</div>
-     </div>`).join("")
-
+    fragment = players.filter((player) => player.type === type).map((player) =>
+     `<div class="player">
+    <img src="${player.image}" alt="">
+    <div class="name">${player.name}</div>
+    <div class="strength">${player.strength}</div>
+    </div>`
+    ).join("")
     return fragment;
 }
+
+
+    
+
 
 // Display players in HTML
 const viewPlayers = (players) => {
